@@ -1,4 +1,4 @@
-postgres query:
+postgres query solution:
 
 SELECT u.name, u.email, SUM(price * quantity) AS amount
 FROM users u
@@ -8,3 +8,6 @@ WHERE category = 'Electronics'
 GROUP BY u.id, u.name, email
 HAVING COUNT(o.id) >= 3 AND SUM(price * quantity) > 1000
 ORDER BY amount DESC;
+
+Testing:
+https://onecompiler.com/postgresql/42nv7z3ek
