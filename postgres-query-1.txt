@@ -1,0 +1,10 @@
+postgres query:
+
+SELECT u.name, u.email, SUM(price * quantity) AS amount
+FROM users u
+JOIN orders o ON u.id = o.user_id
+JOIN products p ON o.product_id = p.id
+WHERE category = 'Electronics'
+GROUP BY u.id, u.name, email
+HAVING COUNT(o.id) >= 3 AND SUM(price * quantity) > 1000
+ORDER BY amount DESC;
